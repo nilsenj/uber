@@ -22,6 +22,7 @@
          "nilsenj\\Uber\\": "src/"
         }
     },
-    "license": "MIT"
-    
+    "license": "MIT",
+    "minimum-stability": "stable"
+
 }
