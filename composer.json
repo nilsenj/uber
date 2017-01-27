@@ -1,0 +1,26 @@
+{
+    "name": "nilsenj/uber",
+    "description": "simple uber php sdk implementation for laravel",
+    "keywords": ["uber, sdk, implementation, ride"],
+    "homepage": "https://github.com/nilsenj/uber",
+    "authors": [
+        {
+            "name": "Nikolenko Ivan(nilsenj)",
+            "email": "nikoleivan@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.0",
+        "stevenmaguire/uber-php": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5"
+    },
+    "autoload": {
+       "psr-4": {
+         "nilsenj\\Uber\\": "src/"
+        }
+    },
+    "license": "MIT"
+    
+}
