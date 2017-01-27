@@ -36,7 +36,7 @@ class Uber implements UberContract
      * @param $longitude
      * @return \Stevenmaguire\Uber\stdClass
      */
-    public function getByLocation($latitude, $longitude)
+    public function getProductsByLocation($latitude, $longitude)
     {
         $products = $this->uberSdk->getProducts(array(
             'latitude' => $latitude,
@@ -49,7 +49,7 @@ class Uber implements UberContract
      * @param $productId
      * @return \Stevenmaguire\Uber\stdClass
      */
-    public function getById($productId)
+    public function getProductsById($productId)
     {
         $product = $this->uberSdk->getProduct($productId);
         return $product;

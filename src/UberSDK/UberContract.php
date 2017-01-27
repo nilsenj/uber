@@ -21,13 +21,13 @@ interface UberContract
      * @param $longitude
      * @return \Stevenmaguire\Uber\stdClass
      */
-    public function getByLocation($latitude, $longitude);
+    public function getProductsByLocation($latitude, $longitude);
 
     /**
      * @param $productId
      * @return \Stevenmaguire\Uber\stdClass
      */
-    public function getById($productId);
+    public function getProductsById($productId);
 
     /**
      * @param $start_latitude
