@@ -15,7 +15,7 @@ or add `"nilsenj/uber": "dev-master"` to the `require` key in `composer.json` an
 
 2. Add ` \nilsenj\Uber\UberServiceProvider::class,` to the `providers` key in `config/app.php`
 3. Add `'Uber' => \nilsenj\Uber\Facades\UberFacade::class,` to the `aliases` key in `config/app.php`
-4. Do `php artisan vendor:publish` to the config. You can see it in `config/uber.php`
+4. Do `php artisan vendor:publish` to publish the config. You can see it in `config/uber.php`
 
 Usage
 -----
