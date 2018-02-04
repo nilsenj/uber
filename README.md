@@ -20,10 +20,6 @@ or add `"nilsenj/uber": "dev-master"` to the `require` key in `composer.json` an
 Usage
 -----
 
-#####Using Facade
-``` html
-{!! Uber::someMethod() !!}
-```
 #####Using Contract
 ``` php
 protected $uber;
@@ -49,14 +45,14 @@ protected $uber;
 #### By location:
 
 ```php
-$products = Uber::getProductsByLocation($latitude, $longitude);
+$products = app('UberContract')->getProductsByLocation($latitude, $longitude);
 ```
 [https://developer.uber.com/docs/riders/references/api/v1.2/products-get](https://developer.uber.com/docs/riders/references/api/v1.2/products-get)
 
 #### By Id:
 
 ```php
-$product = Uber::getProductsById($productId);
+$product = app('UberContract')->getProductsById($productId);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/products-product_id-get](https://developer.uber.com/docs/riders/references/api/v1.2/products-product_id-get)
@@ -64,7 +60,7 @@ $product = Uber::getProductsById($productId);
 ### Get Price Estimates
 
 ```php
-$estimates = Uber::getPriceEstimates($start_latitude, $start_longitude, $end_latitude, $end_longitude);
+$estimates = app('UberContract')->getPriceEstimates($start_latitude, $start_longitude, $end_latitude, $end_longitude);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/estimates-price-get](https://developer.uber.com/docs/riders/references/api/v1.2/estimates-price-get)
@@ -72,7 +68,7 @@ $estimates = Uber::getPriceEstimates($start_latitude, $start_longitude, $end_lat
 ### Get Time Estimates
 
 ```php
-$estimates = Uber::getTimeEstimates($start_latitude, $start_longitude);
+$estimates = app('UberContract')->getTimeEstimates($start_latitude, $start_longitude);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/estimates-time-get](https://developer.uber.com/docs/riders/references/api/v1.2/estimates-time-get)
@@ -80,7 +76,7 @@ $estimates = Uber::getTimeEstimates($start_latitude, $start_longitude);
 ### Get Promotions
 
 ```php
-$promotions = Uber::getPromotions($start_latitude, $start_longitude, $end_latitude, $end_longitude);
+$promotions = app('UberContract')->getPromotions($start_latitude, $start_longitude, $end_latitude, $end_longitude);
 ```
 
 [https://developer.uber.com/docs/riders/ride-promotions/introduction](https://developer.uber.com/docs/riders/ride-promotions/introduction)
@@ -90,7 +86,7 @@ $promotions = Uber::getPromotions($start_latitude, $start_longitude, $end_latitu
 This feature is only available since version `1.1`.
 
 ```php
-$history = Uber::getUserActivity();
+$history = app('UberContract')->getUserActivity();
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/history-get](https://developer.uber.com/docs/riders/references/api/v1.2/history-get)
@@ -98,7 +94,7 @@ $history = Uber::getUserActivity();
 ### Get User Profile
 
 ```php
-$profile = Uber::getUserProfile();
+$profile = app('UberContract')->getUserProfile();
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/me-get](https://developer.uber.com/docs/riders/references/api/v1.2/me-get)
@@ -107,7 +103,7 @@ $profile = Uber::getUserProfile();
 
 ```php
 $attributes = array('applied_promotion_codes' => 'PROMO_CODE');
-$profileResponse = Uber::updateUserProfile($attributes);
+$profileResponse = app('UberContract')->updateUserProfile($attributes);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/me-patch](https://developer.uber.com/docs/riders/references/api/v1.2/me-patch)
@@ -115,7 +111,7 @@ $profileResponse = Uber::updateUserProfile($attributes);
 ### Get Payment Methods
 
 ```php
-$paymentMethods = Uber::getPaymentMethods();
+$paymentMethods = app('UberContract')->getPaymentMethods();
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/payment-methods-get](https://developer.uber.com/docs/riders/references/api/v1.2/payment-methods-get)
@@ -124,7 +120,7 @@ $paymentMethods = Uber::getPaymentMethods();
 
 ```php
 $placeId = 'home';
-$place = Uber::getPlace($placeId);
+$place = app('UberContract')->getPlace($placeId);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/places-place_id-get](https://developer.uber.com/docs/riders/references/api/v1.2/places-place_id-get)
@@ -134,7 +130,7 @@ $place = Uber::getPlace($placeId);
 ```php
 $placeId = 'home';
 $attributes = array('address' => '685 Market St, San Francisco, CA 94103, USA');
-$place = Uber::updatePlace($placeId, $attributes);
+$place = app('UberContract')->updatePlace($placeId, $attributes);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/places-place_id-put](https://developer.uber.com/docs/riders/references/api/v1.2/places-place_id-put)
@@ -142,7 +138,7 @@ $place = Uber::updatePlace($placeId, $attributes);
 ### Request A Ride
 
 ```php
-$request = Uber::requestToRide($start_latitude, $start_longitude, $end_latitude, 
+$request = app('UberContract')->requestToRide($start_latitude, $start_longitude, $end_latitude, 
                 $end_longitude, $product_id = null, $surge_confirmation_id = null, $payment_method_id = null);
 ```
 
@@ -151,7 +147,7 @@ $request = Uber::requestToRide($start_latitude, $start_longitude, $end_latitude,
 ### Get Current Ride Details
 
 ```php
-$request = Uber::getCurrentRideDetails();
+$request = app('UberContract')->getCurrentRideDetails();
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/requests-current-get](https://developer.uber.com/docs/riders/references/api/v1.2/requests-current-get)
@@ -159,7 +155,7 @@ $request = Uber::getCurrentRideDetails();
 ### Get Ride Details
 
 ```php
-$request = Uber::getRideDetails($requestId);
+$request = app('UberContract')->getRideDetails($requestId);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/requests-request_id-get](https://developer.uber.com/docs/riders/references/api/v1.2/requests-request_id-get)
@@ -174,7 +170,7 @@ $end_place_id = 'home',
 $end_latitude = '41.87499492',
 $end_longitude = '-87.67126465'
 
-$updateRequest = Uber::updateCurrentRideDetails($end_address, $end_nickname, $end_place_id,
+$updateRequest = app('UberContract')->updateCurrentRideDetails($end_address, $end_nickname, $end_place_id,
                                                                     $end_latitude, $end_longitude);
 ```
 
@@ -206,7 +202,7 @@ $start_longitude = '-87.62730337',
 $end_latitude = '41.87499492', // optional
 $end_longitude = '-87.67126465', // optional
 
-$requestEstimate = Uber::getRideEstimate($product_id, $start_latitude, 
+$requestEstimate = app('UberContract')->getRideEstimate($product_id, $start_latitude, 
                     $start_longitude, $end_latitude, $end_longitude);
 ```
 
@@ -223,7 +219,7 @@ $map = Uber::getRideMap($requestId);
 ### Get Ride Receipt
 
 ```php
-$receipt = Uber::getRideReceipt($requestId);
+$receipt = app('UberContract')->getRideReceipt($requestId);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/requests-current-delete](https://developer.uber.com/docs/riders/references/api/v1.2/requests-current-delete)
@@ -231,7 +227,7 @@ $receipt = Uber::getRideReceipt($requestId);
 ### Cancel Ride
 
 ```php
-$request = Uber::cancelRide($requestId);
+$request = app('UberContract')->cancelRide($requestId);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/requests-request_id-delete](https://developer.uber.com/docs/riders/references/api/v1.2/requests-request_id-delete)
@@ -255,7 +251,7 @@ $attributes = array(
         'partner_deeplink' => 'partner://team/9383',
     )
 );
-$reminder = Uber::createReminder($attributes)
+$reminder = app('UberContract')->createReminder($attributes)
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/reminders-post](https://developer.uber.com/docs/riders/references/api/v1.2/reminders-post)
@@ -264,7 +260,7 @@ $reminder = Uber::createReminder($attributes)
 
 ```php
 $reminderId = '4bfc6c57-98c0-424f-a72e-c1e2a1d49939';
-$reminder = Uber::getReminder($reminderId);
+$reminder = app('UberContract')->getReminder($reminderId);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/reminders-reminder_id-get](https://developer.uber.com/docs/riders/references/api/v1.2/reminders-reminder_id-get)
@@ -298,7 +294,7 @@ $reminder = Uber::updateReminder($reminderId, $attributes);
 
 ```php
 $reminderId = '4bfc6c57-98c0-424f-a72e-c1e2a1d49939';
-$reminder = Uber::cancelReminder($reminderId);
+$reminder = app('UberContract')->cancelReminder($reminderId);
 ```
 
 [https://developer.uber.com/docs/riders/references/api/v1.2/reminders-reminder_id-delete](https://developer.uber.com/docs/riders/references/api/v1.2/reminders-reminder_id-delete)
@@ -312,7 +308,7 @@ Rate limiting is implemented on the basis of a specific client's secret token. B
 When consuming the service with this package, your rate limit status will be made available within the client.
 
 ```php
-$rateLimit = Uber::rateLimiting($productId);
+$rateLimit = app('UberContract')->rateLimiting($productId);
 will return an array
 ["limit" => , "remaining" => , "reset" => ]
 ```
@@ -333,7 +329,7 @@ $start_longitude = '-87.62730337',
 $end_latitude = '41.87499492',
 $end_longitude = '-87.67126465'
 
-$updateRequest = Uber::modifyOngoingStatusRequestSandbox(
+$updateRequest = app('UberContract')->modifyOngoingStatusRequestSandbox(
                  $product_id, $start_latitude, $start_longitude, $end_latitude,
                  $end_longitude, $status = ''); 
 ```
